@@ -1,0 +1,63 @@
+<?php
+
+
+if($_POST["message"]) {
+
+
+mail("your@email.address", "Here is the subject line",
+
+
+$_POST["insert your message here"]. "From: an@email.address");
+
+
+}
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Menu</title>
+    <link rel="stylesheet" href="style.css">
+	<script src="index.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Zen+Antique&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Mono:wght@300&family=Zen+Antique&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class = "navBar">
+      <ul>
+        <li> <a href = "index.html">Home</a></li>
+        <li><a href = "resume.html">Resume</a></li>
+        <li><a href = "contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class = "aboutMe">
+        <p>const ContactMe {</p>
+            <div >
+                <p>Email : "yksun15@gmail.com</p>
+                <p>Phone Number : "07897293569"</p>
+                <p>Linkedin : "https://www.linkedin.com/in/yuankai-sun-2a26011b8/"" </p>
+                <p>Github : "https://github.com/KaiSun19"</p>
+            </div>
+        <p>}</p>
+    </div>
+    <div class = "contactForm">
+    <form action="https://formsubmit.co/yksun15@gmail.com" method="POST">
+      <h2>Let's connect</h2>
+      <input type="text" name="name" placeholder = "Name" required>
+      <input type="email" name="email" placeholder = "Email" required>
+      <textarea name="comment[body]" rows="5" cols="50" wrap="physical" id="comment_text_area" placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    </div>
+      
+  </body>
+</html>
