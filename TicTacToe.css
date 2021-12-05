@@ -1,0 +1,264 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --cell-size: 100px;
+    --mark-size: 90px; 
+}
+
+body {
+    margin: 0;
+}
+
+.board{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    grid-template-columns: repeat(3, auto);
+}
+
+.board:hover{
+
+}
+
+.cell{
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor:pointer;
+
+}
+
+.cell:first-child, 
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+.cell:first-child,
+.cell:nth-child(4),
+.cell:nth-child(7){
+    border-left: none;
+}
+
+.cell:nth-child(3n){
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.o{
+    cursor: not-allowed;
+}
+
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after{
+    content: "";
+    background-color: rgb(158, 158, 158);
+    width: var(--mark-size);
+    height: var(--mark-size);
+    position: absolute;
+    border-radius: 50%;
+}
+
+.board.o .cell:not(.x):not(.o):hover::after{
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+
+
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after{
+    content: "";
+    background-color: rgb(158, 158, 158);
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    position: absolute;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.board.x .cell:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+.cell.x::before, 
+.cell.x::after{
+    content: "";
+    background-color: black;
+    width: calc(var(--mark-size) * 0.15);
+    height: var(--mark-size);
+    position: absolute;
+}
+
+.cell.x::before{
+    transform: rotate(45deg);
+}
+
+.cell.x::after{
+    transform: rotate(-45deg);
+}
+
+.cell.o::before, 
+.cell.o::after{
+    content: "";
+    background-color: black;
+    width: var(--mark-size);
+    height: var(--mark-size);
+    position: absolute;
+    border-radius: 50%;
+}
+
+
+.cell.o::after{
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
+}
+
+.winningMessage{
+    display:none;
+    margin: 0 0 0 0;
+    background-color: rgba(15, 15, 15, 0.9);
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    position:fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+#restartButton{
+    border: 1px solid rgba(15, 15, 15, 0.9);
+    font-size: xx-large;
+    height:8%;
+    width:15%;
+    cursor:  pointer;
+}
+
+#restartButton:hover{
+    background-color: rgba(15, 15, 15, 0.9);
+    color:white;
+}
+
+[data-winningText]{
+    font-size: xxx-large;
+    color: white;
+
+}
+
+.mode{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.mode .switch-body{
+    margin: 1% 1% 1% 1% ;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgb(0, 0, 0);
+    width: 96px;
+    height: 48px;
+    border-radius: 999px;
+    box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.1);
+    transition: all 0.25s ease;
+
+}
+
+.mode > p{
+    font-size: x-large;
+}
+
+
+.mode .switch-body .toggle{
+    width:48px;
+    height: 48px;
+    background-color: white;
+    border-radius : 50%;
+    box-shadow:  0 2px 4px 0 rgba(0,0,0,0.25);
+    border: solid 2px rgb(0, 0, 0);
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+}
+
+.mode.active .switch-body {
+    background-color: #000000;
+
+}
+
+.mode.active .switch-body .toggle{
+    transform: translateX(100%);
+}
+
+.mode label{
+    font-family: 'Urbanist', sans-serif;
+    margin-left: 10px;
+}
+
+.mode input[type=checkbox]{
+    display : none; 
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.navBar{
+    width: 100%;
+    height:1%;
+    background-color: black;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.navBar > ul, .navBar > li{
+    text-decoration: none;
+    list-style-type: none;
+
+}
+
+li{
+    padding: 2px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    float: left;
+    transition: 0.2s;
+}
+
+li:hover{
+    cursor: pointer;
+    text-shadow:1px 1px 5px #fff, 1px 1px 5px #ccc;
+}
